@@ -1910,9 +1910,9 @@ namespace Anycubic {
      static uint16_t movespeed = 50;
      static float move_dis = 1.0f;
 
-     if(key_value == 2 || key_value == 4 ||
+     if((key_value == 2 || key_value == 4 ||
         key_value == 6 || key_value == 8 ||
-        key_value == 10 || key_value == 12 && !isMoving()) {
+        key_value == 10 || key_value == 12) && !isMoving()) {
 
         if(getAxisPosition_mm(Z) < 0) {
             setAxisPosition_mm(0, Z, 8);
