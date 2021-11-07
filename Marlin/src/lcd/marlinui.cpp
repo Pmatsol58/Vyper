@@ -1700,7 +1700,7 @@ void MarlinUI::update() {
 
   #endif // EEPROM_AUTO_INIT
 
-  #if ENABLED(PREHEAT_BEFORE_LEVELING)
+  #if ANY(PREHEAT_BEFORE_LEVELING, PREHEAT_BEFORE_PROBING)
     void MarlinUI::probe_preheating_start()
     {
 //        TERN_(EXTENSIBLE_UI, ExtUI::onStatusChanged(status_message));

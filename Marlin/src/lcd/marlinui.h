@@ -517,7 +517,7 @@ public:
     #endif
   #endif
 
-  #if ENABLED(PREHEAT_BEFORE_LEVELING)
+  #if ANY(PREHEAT_BEFORE_LEVELING, PREHEAT_BEFORE_PROBING)
     static void probe_preheating_start();
     static void probe_preheating_stop();
   #endif
