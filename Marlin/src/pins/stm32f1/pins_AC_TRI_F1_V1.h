@@ -37,7 +37,7 @@
 // EEPROM
 //
 #define FLASH_EEPROM_EMULATION
-#define MARLIN_EEPROM_SIZE              0x1000  // 4KB
+#define MARLIN_EEPROM_SIZE                0x1000  // 4KB
 
 #if 0
 #if ENABLED(FLASH_EEPROM_EMULATION)
@@ -121,8 +121,8 @@
 #define POWER_LOSS_PIN                      PA6
 #define FIL_RUNOUT_PIN                      PA5
 #define CASE_LIGHT_PIN                      PA13
-#define POWER_MONITOR_VOLTAGE_PIN           PA6
-#define MAIN_VOLTAGE_MEASURE_PIN            PA6
+#define POWER_MONITOR_VOLTAGE_PIN           POWER_LOSS_PIN
+#define MAIN_VOLTAGE_MEASURE_PIN            POWER_LOSS_PIN
 #define AUTO_LEVEL_TX_PIN                   PB13
 #define AUTO_LEVEL_RX_PIN                   PB12
 
@@ -130,28 +130,28 @@
 // SD Card
 //
 #define SDIO_SUPPORT
-#define SD_DETECT_PIN                         PC7
+#define SD_DETECT_PIN                       PC7
 
 #ifdef SDIO_SUPPORT
 //
 // SPI
 //
-  #define SPI_DEVICE                          -1
-  #define SCK_PIN                             -1
-  #define MISO_PIN                            -1
-  #define MOSI_PIN                            -1
-  #define SS_PIN                              -1
+  #define SPI_DEVICE                        -1
+  #define SCK_PIN                           -1
+  #define MISO_PIN                          -1
+  #define MOSI_PIN                          -1
+  #define SS_PIN                            -1
 
 //
 // SDIO
 //
-  #define SDIO_READ_RETRIES                   16
-  #define SDIO_D0_PIN                         PC8
-  #define SDIO_D1_PIN                         PC9
-  #define SDIO_D2_PIN                         PC10
-  #define SDIO_D3_PIN                         PC11
-  #define SDIO_CK_PIN                         PC12
-  #define SDIO_CMD_PIN                        PD2
+  #define SDIO_READ_RETRIES                 16
+  #define SDIO_D0_PIN                       PC8
+  #define SDIO_D1_PIN                       PC9
+  #define SDIO_D2_PIN                       PC10
+  #define SDIO_D3_PIN                       PC11
+  #define SDIO_CK_PIN                       PC12
+  #define SDIO_CMD_PIN                      PD2
 
 #else
 
@@ -170,32 +170,36 @@
    * TMC2209 stepper drivers
    * Hardware serial communication ports.
    */
-  #define X_HARDWARE_SERIAL  MSerial2
-  #define Y_HARDWARE_SERIAL  MSerial2
-  #define Z_HARDWARE_SERIAL  MSerial2
-  #define Z2_HARDWARE_SERIAL  MSerial2
-  //#define E1_HARDWARE_SERIAL MSerial2
+  #define X_HARDWARE_SERIAL                 MSerial2
+  #define Y_HARDWARE_SERIAL                 MSerial2
+  #define Z_HARDWARE_SERIAL                 MSerial2
+  #define Z2_HARDWARE_SERIAL                MSerial2
+  //#define E1_HARDWARE_SERIAL                MSerial2
+
+  #define E0_SERIAL_TX_PIN                  PA11
+  #define E0_SERIAL_RX_PIN                  PA12
 
   #define E1_SERIAL_TX_PIN                  -1
   #define E1_SERIAL_RX_PIN                  -1
 
   // Default TMC slave addresses
   #ifndef X_SLAVE_ADDRESS
-    #define X_SLAVE_ADDRESS  3
+    #define X_SLAVE_ADDRESS                 3
   #endif
   #ifndef Y_SLAVE_ADDRESS
-    #define Y_SLAVE_ADDRESS  2
+    #define Y_SLAVE_ADDRESS                 2
   #endif
   #ifndef Z_SLAVE_ADDRESS
-    #define Z_SLAVE_ADDRESS  1
+    #define Z_SLAVE_ADDRESS                 1
   #endif
   #ifndef Z2_SLAVE_ADDRESS
-    #define Z2_SLAVE_ADDRESS  0
+    #define Z2_SLAVE_ADDRESS                0
   #endif
-  //#ifndef E1_SLAVE_ADDRESS
-  //  #define E1_SLAVE_ADDRESS 0
-  //#endif
+  #ifndef E0_SLAVE_ADDRESS
+    #define E0_SLAVE_ADDRESS                0
+  #endif
 
 // Reduce baud rate to improve software serial reliability
-  #define TMC_BAUD_RATE                    115200
+  #define TMC_BAUD_RATE                     115200
+  #define TMC_E0_BAUD_RATE                   19200
 #endif

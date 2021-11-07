@@ -648,7 +648,7 @@
   #include "pins_custom.h"                      //                                        env:custom
 
 #elif MB(AC_TRI_F1_V1)
-  #include "stm32f1/pins_AC_TRI_F1_V1.h"
+  #include "stm32f1/pins_AC_TRI_F1_V1.h"		// STM32F1                                env:ac_tri_f1
 
 //
 // Linux Native Debug board
