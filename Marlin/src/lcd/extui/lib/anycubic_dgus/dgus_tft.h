@@ -33,7 +33,7 @@
 #include "../../../../inc/MarlinConfigPre.h"
 #include "../../ui_api.h"
 
-#define MAIN_BOARD_FIRMWARE_VER "V2.4.5p2_la_T"
+#define MAIN_BOARD_FIRMWARE_VER "V2.4.5p2_la_TE"
 
 
 /****************** PAGE INDEX***********************/
